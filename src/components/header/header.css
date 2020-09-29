@@ -1,0 +1,6 @@
+.form-inline {
+    justify-content: space-between;
+}
+.input-block-el {
+    flex-basis: 70%;
+}
