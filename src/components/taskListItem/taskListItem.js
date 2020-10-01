@@ -6,7 +6,7 @@ export default function TaskListItem() {
   const elements = data.map((el) => {
     return (
       <li className={el.className} key={el.key} > 
-        <Task key={el.id}/>
+        <Task done={el.done} editing = {el.editing} onChangeHandler={el.onChangeHandler} stateTask={el.stateTask}  date={el.date} onToggleDone={el.onToggleDone} onSubmit={el.onSubmit} changeItem={el.onChangeItem} onDeleted={el.onRemoveItem} isChecked={el.isChecked} key={el.id}/>
       </li>
     );
   });

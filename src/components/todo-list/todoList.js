@@ -43,7 +43,6 @@ export {AdditionalContext,TodoList};
       </AdditionalContext.Provider>
     );
   });
-  console.log(elements);
   return <ul className='todo-list'>
       {elements}
   </ul>

@@ -1,22 +1,20 @@
 import React, { useContext } from "react";
 import "./task.css";
 import Timer from "../timer";
-import { AdditionalContext } from "../todo-list/todoList";
 
-export default function Task() {
-  const {
-    done,
-    editing,
-    onChangeHandler,
-    stateTask,
-    date,
-    onToggleDone,
-    onSubmit,
-    changeItem,
-    onDeleted,
-    isChecked,
-  } = useContext(AdditionalContext);
-console.log(stateTask);
+export default function Task({
+  done,
+  editing,
+  onChangeHandler,
+  stateTask,
+  date,
+  onToggleDone,
+  onSubmit,
+  changeItem,
+  onDeleted,
+  isChecked,
+}) {
+  
 
   let classNames = "description";
   let classNameLabel = "label";
@@ -33,27 +31,45 @@ console.log(stateTask);
         />{" "}
       </label>
     );
-  }else {
+  } else {
     editingElem = (
-        <>
-          <div className={classNameLabel}>
-            <a href="#id" className={classNames}>
-              {stateTask}
-            </a>{' '}
-            <Timer />
-            <span className="created">{date} created ago</span>
-            <button aria-label="Delete" type="button" className="icon icon-destroy" onClick={onDeleted} />
-            <button aria-label="Edit" type="button" className="icon icon-edit" onClick={changeItem} />
-          </div>
-        </>
-      );
+      <>
+        <div className={classNameLabel}>
+          <a href="#id" className={classNames}>
+            {stateTask}
+          </a>{" "}
+          <Timer />
+          <span className="created">{date} created ago</span>
+          <button
+            aria-label="Delete"
+            type="button"
+            className="icon icon-destroy"
+            onClick={onDeleted}
+          />
+          <button
+            aria-label="Edit"
+            type="button"
+            className="icon icon-edit"
+            onClick={changeItem}
+          />
+        </div>
+      </>
+    );
   }
-  return <>
-  <form onSubmit={onSubmit}>
-      <div className="view" >
-        <input className="toggle" checked={isChecked} onInput={onToggleDone} onChange={() => {}} type="checkbox" />
-        {editingElem}
-      </div>
-    </form>
-  </>;
+  return (
+    <>
+      <form onSubmit={onSubmit}>
+        <div className="view">
+          <input
+            className="toggle"
+            checked={isChecked}
+            onInput={onToggleDone}
+            onChange={() => {}}
+            type="checkbox"
+          />
+          {editingElem}
+        </div>
+      </form>
+    </>
+  );
 }
