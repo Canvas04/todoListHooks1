@@ -21,7 +21,7 @@ export {AdditionalContext,TodoList};
   const elements = filterData.map((el) => {
     return (
       <AdditionalContext.Provider
-        value={[
+        value={
           createItem(
             el.className,
             el.done,
@@ -35,8 +35,8 @@ export {AdditionalContext,TodoList};
             el.editing,
             (e) => onSubmit(el.id, e),
             (e) => onChangeHandler(el.id, e)
-          ),
-        ]}
+          )
+        }
       >
         <TaskListItem />
       </AdditionalContext.Provider>
