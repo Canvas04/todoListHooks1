@@ -3,8 +3,8 @@ import "./todoList.css";
 import { MyContext } from "../../index";
 import TaskListItem from "../taskListItem";
 const AdditionalContext = React.createContext();
-export {AdditionalContext,TodoList};
-  function TodoList() {
+export { AdditionalContext, TodoList };
+function TodoList() {
   let filterData;
   let {
     data: todos,
@@ -14,13 +14,14 @@ export {AdditionalContext,TodoList};
     changeItem,
     onSubmit,
     onChangeHandler,
-   } = useContext(MyContext);
+  } = useContext(MyContext);
   if (filter === "all") filterData = todos;
   if (filter === "active") filterData = todos.filter((el) => !el.done);
   if (filter === "completed") filterData = todos.filter((el) => el.done);
   const elements = filterData.map((el) => {
     return (
-      <AdditionalContext.Provider key={el.id}
+      <AdditionalContext.Provider
+        key={el.id}
         value={[
           createItem(
             el.className,
@@ -35,17 +36,14 @@ export {AdditionalContext,TodoList};
             el.editing,
             (e) => onSubmit(el.id, e),
             (e) => onChangeHandler(el.id, e)
-          )
-        ]
-        }
+          ),
+        ]}
       >
         <TaskListItem />
       </AdditionalContext.Provider>
     );
   });
-  return <ul className='todo-list'>
-      {elements}
-  </ul>
+  return <ul className="todo-list">{elements}</ul>;
 }
 function createItem(
   className,
@@ -73,6 +71,6 @@ function createItem(
     editing,
     onSubmit,
     onChangeHandler,
-    onDeleted
+    onDeleted,
   };
 }
