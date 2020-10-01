@@ -34,7 +34,7 @@ const App = () => {
       isChecked: !oldItem.isChecked,
     };
     const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
-    setData(newArray)
+    setData(newArray);
   };
   const changeItem = () => {};
   const onSubmit = (id, e) => {
@@ -53,7 +53,10 @@ const App = () => {
     });
   };
   const onChangeHandler = () => {};
-  const removeCompletedItem = () => {};
+  const removeCompletedItem = () => {
+    const resArr = data.filter((el) => !el.done);
+    setData(resArr);
+  };
   const changeFilter = () => {};
   const addItem = (text) => {
     const newObj = createTodoItem(text);
