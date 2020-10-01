@@ -10,12 +10,8 @@ const App = () => {
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("all");
   const removeItem = (id) => {
-    setData((state) => {
-      const newArr = data.filter((el) => el.id !== id);
-      return {
-        data: newArr,
-      };
-    });
+    const newArr = data.filter((el) => el.id !== id);
+    setData(newArr);
   };
   const createTodoItem = (text) => {
     return {
@@ -59,7 +55,7 @@ const App = () => {
       return [...newTime, newObj];
     });
   };
-  
+
   const doneCount = data.filter((el) => el.done).length;
   const todoCount = data.length - doneCount;
   return (
@@ -77,7 +73,7 @@ const App = () => {
           changeFilter: changeFilter,
           removeCompletedItem: removeCompletedItem,
           addItem: addItem,
-          onSubmit: onSubmit
+          onSubmit: onSubmit,
         }}
       >
         <Header />

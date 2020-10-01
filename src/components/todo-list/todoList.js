@@ -73,5 +73,6 @@ function createItem(
     editing,
     onSubmit,
     onChangeHandler,
+    onDeleted
   };
 }

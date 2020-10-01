@@ -14,7 +14,6 @@ export default function Task({
   onDeleted,
   isChecked,
 }) {
-  
 
   let classNames = "description";
   let classNameLabel = "label";
