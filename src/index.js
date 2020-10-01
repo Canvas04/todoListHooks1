@@ -15,7 +15,7 @@ const App = () => {
   };
   const createTodoItem = (text) => {
     return {
-      id: idItem,
+      id: idItem++,
       text,
       time: new Date(),
       date: formatDistanceToNow(new Date(), { includeSeconds: true }),
