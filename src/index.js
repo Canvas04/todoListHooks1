@@ -4,12 +4,11 @@ import Header from "./components/header";
 import Main from "./components/main";
 import { formatDistanceToNow } from "date-fns";
 const MyContext = React.createContext();
-export {MyContext};
+export { MyContext };
 const App = () => {
   let idItem = 100;
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState("all");
-
   const removeItem = (id) => {
     setData((state) => {
       const newArr = data.filter((el) => el.id !== id);
@@ -17,44 +16,70 @@ const App = () => {
         data: newArr,
       };
     });
-
-    const createTodoItem = (text) => {
-      return {
-        id: idItem++,
-        text,
-        date: formatDistanceToNow(new Date(), { includeSeconds: true }),
-        done: false,
-        editing: false,
-        isChecked: false,
-      };
+  };
+  const createTodoItem = (text) => {
+    return {
+      id: idItem,
+      text,
+      time: new Date(),
+      date: formatDistanceToNow(new Date(), { includeSeconds: true }),
+      done: false,
+      editing: false,
+      isChecked: false,
     };
   };
-const onToggleDone = () => {
-
-}
-const changeItem = () => {
-
-}
-const onSubmit = () => {
-
-}
-const onChangeHandler = () => {
-
-}
-const removeCompletedItem = () => {
-
-}
-const changeFilter =  () => {
-
-}
-const addItem = () => {
-
-}
-const doneCount = data.filter(el => el.done).length;
-const todoCount = data.length - doneCount
+  const onToggleDone = () => {};
+  const changeItem = () => {};
+  const onSubmit = (id, e) => {
+    e.preventDefault();
+    setData((data) => {
+      const idx = data.findIndex((el) => el.id === id);
+      const oldItem = data[idx];
+      const newItem = {
+        ...oldItem,
+        editing: !oldItem.editing,
+        date: formatDistanceToNow(new Date(), { includeSeconds: true }),
+        time: new Date(),
+      };
+      const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
+      setData(newArray);
+    });
+  };
+  const onChangeHandler = () => {};
+  const removeCompletedItem = () => {};
+  const changeFilter = () => {};
+  const addItem = (text) => {
+    const newObj = createTodoItem(text);
+    setData((data) => {
+      newObj.date = formatDistanceToNow(new Date(), { includeSeconds: true });
+      const newTime = data.map((el) => {
+        el.date = formatDistanceToNow(el.time, { includeSeconds: true });
+        return el;
+      });
+      return [...newTime, newObj];
+    });
+  };
+  
+  const doneCount = data.filter((el) => el.done).length;
+  const todoCount = data.length - doneCount;
   return (
     <section className="todo-app">
-      <MyContext.Provider value={{data,filter,removeItem,onToggleDone,changeItem,onChangeHandler,doneCount,todoCount,changeFilter,removeCompletedItem,addItem}}>
+      <MyContext.Provider
+        value={{
+          data: data,
+          filter: filter,
+          removeItem: removeItem,
+          onToggleDone: onToggleDone,
+          changeItem: changeItem,
+          onChangeHandler: onChangeHandler,
+          doneCount: doneCount,
+          todoCount: todoCount,
+          changeFilter: changeFilter,
+          removeCompletedItem: removeCompletedItem,
+          addItem: addItem,
+          onSubmit: onSubmit
+        }}
+      >
         <Header />
         <Main />
       </MyContext.Provider>

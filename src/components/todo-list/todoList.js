@@ -20,13 +20,13 @@ export {AdditionalContext,TodoList};
   if (filter === "completed") filterData = todos.filter((el) => el.done);
   const elements = filterData.map((el) => {
     return (
-      <AdditionalContext.Provider
-        value={
+      <AdditionalContext.Provider key={el.id}
+        value={[
           createItem(
             el.className,
             el.done,
             el.text,
-            el.id,
+            el.id++,
             el.date,
             el.isChecked,
             () => removeItem(el.id),
@@ -36,12 +36,14 @@ export {AdditionalContext,TodoList};
             (e) => onSubmit(el.id, e),
             (e) => onChangeHandler(el.id, e)
           )
+        ]
         }
       >
         <TaskListItem />
       </AdditionalContext.Provider>
     );
   });
+  console.log(elements);
   return <ul className='todo-list'>
       {elements}
   </ul>

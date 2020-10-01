@@ -16,6 +16,7 @@ export default function Task() {
     onDeleted,
     isChecked,
   } = useContext(AdditionalContext);
+console.log(stateTask);
 
   let classNames = "description";
   let classNameLabel = "label";
@@ -49,7 +50,7 @@ export default function Task() {
   }
   return <>
   <form onSubmit={onSubmit}>
-      <div className="view">
+      <div className="view" >
         <input className="toggle" checked={isChecked} onInput={onToggleDone} onChange={() => {}} type="checkbox" />
         {editingElem}
       </div>

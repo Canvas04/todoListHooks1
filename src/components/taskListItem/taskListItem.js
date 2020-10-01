@@ -5,8 +5,8 @@ export default function TaskListItem() {
   const data = useContext(AdditionalContext);
   const elements = data.map((el) => {
     return (
-      <li className={el.className}>
-        <Task />
+      <li className={el.className} key={el.key} > 
+        <Task key={el.id}/>
       </li>
     );
   });
