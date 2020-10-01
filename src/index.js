@@ -47,11 +47,14 @@ const removeCompletedItem = () => {
 const changeFilter =  () => {
 
 }
+const addItem = () => {
+
+}
 const doneCount = data.filter(el => el.done).length;
 const todoCount = data.length - doneCount
   return (
     <section className="todo-app">
-      <MyContext.Provider value={{data,filter,removeItem,onToggleDone,changeItem,onChangeHandler,doneCount,todoCount,changeFilter,removeCompletedItem}}>
+      <MyContext.Provider value={{data,filter,removeItem,onToggleDone,changeItem,onChangeHandler,doneCount,todoCount,changeFilter,removeCompletedItem,addItem}}>
         <Header />
         <Main />
       </MyContext.Provider>
