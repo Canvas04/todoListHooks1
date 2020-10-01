@@ -24,7 +24,18 @@ const App = () => {
       isChecked: false,
     };
   };
-  const onToggleDone = () => {};
+  const onToggleDone = (id, e) => {
+    e.preventDefault();
+    const idx = data.findIndex((el) => el.id === id);
+    const oldItem = data[idx];
+    const newItem = {
+      ...oldItem,
+      done: !oldItem.done,
+      isChecked: !oldItem.isChecked,
+    };
+    const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
+    setData(newArray)
+  };
   const changeItem = () => {};
   const onSubmit = (id, e) => {
     e.preventDefault();
