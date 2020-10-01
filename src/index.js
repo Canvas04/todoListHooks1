@@ -52,12 +52,21 @@ const App = () => {
       setData(newArray);
     });
   };
-  const onChangeHandler = () => {};
+  const onChangeHandler = (id, e) => {
+    e.persist();
+    const idx = data.findIndex((el) => el.id === id);
+    const oldItem = data[idx];
+    const newItem = { ...oldItem, text: e.target.value };
+    const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
+    setData(newArray);
+  };
   const removeCompletedItem = () => {
     const resArr = data.filter((el) => !el.done);
     setData(resArr);
   };
-  const changeFilter = () => {};
+  const changeFilter = (filterValue) => {
+    setFilter(filterValue)
+  };
   const addItem = (text) => {
     const newObj = createTodoItem(text);
     setData((data) => {
