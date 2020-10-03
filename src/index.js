@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
 import Header from "./components/header";
 import Main from "./components/main";
@@ -36,8 +36,15 @@ const App = () => {
     const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
     setData(newArray);
   };
-  const changeItem = () => {};
+  const changeItem = (id) => {
+    const idx = data.findIndex((el) => el.id === id);
+    const oldItem = data[idx];
+    const newItem = { ...oldItem, editing: !oldItem.editing };
+    const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
+    setData(newArray);
+  };
   const onSubmit = (id, e) => {
+    
     e.preventDefault();
     setData((data) => {
       const idx = data.findIndex((el) => el.id === id);
@@ -49,23 +56,23 @@ const App = () => {
         time: new Date(),
       };
       const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
-      setData(newArray);
+    return newArray;
     });
   };
   const onChangeHandler = (id, e) => {
-    e.persist();
     const idx = data.findIndex((el) => el.id === id);
     const oldItem = data[idx];
     const newItem = { ...oldItem, text: e.target.value };
     const newArray = [...data.slice(0, idx), newItem, ...data.slice(idx + 1)];
-    setData(newArray);
+   setData(newArray)
   };
+
   const removeCompletedItem = () => {
     const resArr = data.filter((el) => !el.done);
     setData(resArr);
   };
   const changeFilter = (filterValue) => {
-    setFilter(filterValue)
+    setFilter(filterValue);
   };
   const addItem = (text) => {
     const newObj = createTodoItem(text);

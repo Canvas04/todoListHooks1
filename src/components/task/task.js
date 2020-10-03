@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./task.css";
 import Timer from "../timer";
 
@@ -14,6 +14,7 @@ export default function Task({
   onDeleted,
   isChecked,
 }) {
+  
   let classNames = "description";
   let classNameLabel = "label";
   if (done) classNames += " completed-task";
@@ -26,6 +27,7 @@ export default function Task({
           className="description form-control"
           onChange={onChangeHandler}
           defaultValue={stateTask}
+          autoFocus
         />{" "}
       </label>
     );
@@ -56,7 +58,7 @@ export default function Task({
   }
   return (
     <>
-      <form onSubmit={onSubmit}>
+      <form name="form" id="#form" onSubmit={onSubmit}>
         <div className="view">
           <input
             className="toggle"
