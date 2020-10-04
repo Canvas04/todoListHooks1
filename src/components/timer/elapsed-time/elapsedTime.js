@@ -1,5 +1,6 @@
 import React from 'react';
 import formatDuration from 'format-duration';
+import propTypes from 'prop-types';
 export default ElapsedTime;
 
 function elapsedTime(events) {
@@ -16,4 +17,7 @@ function elapsedTime(events) {
     return <div className='timer-el'>{formatDuration(elapsedTime(timingEvents))}</div>;
 
     
+}
+ElapsedTime.propTypes = {
+  timingEvents: propTypes.arrayOf(propTypes.string)
 }

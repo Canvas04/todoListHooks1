@@ -1,6 +1,5 @@
 import React from "react";
 import propTypes from 'prop-types';
-import Buttons from "../timer/buttons";
 
 export default function ButtonAdd({addItem}) {
   return <> 

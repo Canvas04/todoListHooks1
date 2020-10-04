@@ -1,6 +1,7 @@
 import React from "react";
 import "./task.css";
 import Timer from "../timer";
+import propTypes from 'prop-types';
 
 export default function Task({
   done,
@@ -72,4 +73,16 @@ export default function Task({
       </form>
     </>
   );
+}
+Task.propTypes = {
+  done: propTypes.bool.isRequired,
+  editing: propTypes.bool.isRequired,
+  onChangeHandler: propTypes.func.isRequired,
+  stateTask: propTypes.string.isRequired,
+  date: propTypes.string.isRequired,
+  onToggleDone: propTypes.func.isRequired,
+  onSubmit: propTypes.func.isRequired,
+  changeItem: propTypes.func.isRequired,
+  onDeleted: propTypes.func.isRequired,
+  isChecked: propTypes.bool.isRequired
 }
