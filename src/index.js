@@ -113,4 +113,4 @@ const App = () => {
   );
 };
 ReactDom.render(<App />, document.querySelector("#root"));
-// Надо сделать компонент Header
+// Остановился на таймере , а именно на компоненте Button
