@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-export default function TaskListItem({task}) {
-  return (
-    <>
-      <li>
-        {task}
-      </li>
-    </>
-  );
+export default function TaskListItem({ task }) {
+	return (
+		<>
+			<li>{task}</li>
+		</>
+	);
 }

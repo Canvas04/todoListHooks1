@@ -4,20 +4,20 @@ import propTypes from 'prop-types';
 export default ElapsedTime;
 
 function elapsedTime(events) {
-    let elapsed = 0;
-    for (let i = 0; i < events.length; i += 2) {
-      const start = events[i];
-      const stop = events[i + 1] || new Date();
-      elapsed += stop - start;
-    }
-    return elapsed;
+	let elapsed = 0;
+	for (let i = 0; i < events.length; i += 2) {
+		const start = events[i];
+		const stop = events[i + 1] || new Date();
+		elapsed += stop - start;
+	}
+	return elapsed;
 }
 
- function  ElapsedTime({timingEvents}) {
-    return <div className='timer-el'>{formatDuration(elapsedTime(timingEvents))}</div>;
-
-    
+function ElapsedTime({ timingEvents }) {
+	return (
+		<div className="timer-el">{formatDuration(elapsedTime(timingEvents))}</div>
+	);
 }
 ElapsedTime.propTypes = {
-  timingEvents: propTypes.arrayOf(propTypes.string)
-}
+	timingEvents: propTypes.arrayOf(propTypes.string),
+};

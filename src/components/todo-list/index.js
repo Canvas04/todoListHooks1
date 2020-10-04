@@ -1,2 +1,2 @@
-import {TodoList} from './todoList';
+import { TodoList } from './todoList';
 export default TodoList;
