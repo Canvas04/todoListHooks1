@@ -17,7 +17,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix --color",
+    "format": "prettier — write src/**/*.js",
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +40,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
+    "eslint": "^7.10.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-html": "^6.1.0",
@@ -48,5 +53,16 @@
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "prop-types": "^15.7.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    ".js": [
+      "npm run lint:fix",
+      "git add"
+    ]
   }
 }
